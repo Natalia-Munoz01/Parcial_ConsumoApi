@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configuración de EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -20,7 +19,7 @@ app.use('/starWars', starWarsRoutes);
 
 // Ruta principal
 app.get('/', (req, res) => {
-    res.redirect('/starWars/all'); // Redirigir a la vista con todos los personajes
+    res.redirect('/starWars/all');
 });
 
 // Iniciar servidor

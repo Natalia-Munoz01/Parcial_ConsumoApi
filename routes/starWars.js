@@ -6,7 +6,7 @@ const axios = require('axios');
 router.get('/all', async (req, res) => {
     try {
         const response = await axios.get('https://starwars-n5ec-developuptcs-projects.vercel.app/');
-        const characters = response.data || []; // Asegúrate de que `response.data` sea un array
+        const characters = response.data || [];
         res.render('index', { characters, error: null });
     } catch (error) {
         console.error('Error al obtener todos los personajes:', error);
