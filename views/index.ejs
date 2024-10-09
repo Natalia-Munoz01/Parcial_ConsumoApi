@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes de Star Wars</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Personajes STAR WARS</h1>
+
+        <% if (error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <div class="text-center mb-4">
+            <a href="/starWars/all" class="btn btn-success">Mostrar Todos los Personajes</a>
+        </div>
+
+        <ul class="list-group mt-3">
+            <% if (characters.length > 0) { %>
+                <% characters.forEach(character => { %>
+                    <li class="list-group-item">
+                        <strong><%= character.name %></strong> (ID: <%= character._id %>)
+                    </li>
+                <% }); %>
+            <% } else { %>
+                <li class="list-group-item">No se encontraron personajes.</li>
+            <% } %>
+        </ul>
+
+        <h2 class="mt-5">Buscar por ID:</h2>
+        <form action="/starWars/search/id" method="GET" class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" name="id" class="form-control" placeholder="Introduce el ID" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+        </form>
+
+        <h2 class="mt-5">Buscar por nombre:</h2>
+        <form action="/starWars/search/name" method="GET" class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" name="name" class="form-control" placeholder="Introduce el nombre" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
